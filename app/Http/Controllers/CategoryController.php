@@ -24,7 +24,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -75,7 +77,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -87,7 +90,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'
+        ]);
+
+        $category = Category::find($id);
+        $category -> name = $request->get('name');
+        $category->save();
+
+        return redirect('/categories')->with('success','Category Updated!');
     }
 
     /**
