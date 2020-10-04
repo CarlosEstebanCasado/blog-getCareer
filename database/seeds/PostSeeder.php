@@ -19,7 +19,7 @@ class PostSeeder extends Seeder
         DB::table('posts')->insert([
             'user_id' => random_int(1,10),
             'category_id' => random_int(1,3),
-            'title' => 'Travel',
+            'title' => 'Title 1',
             'body' => $faker->text,
             'created_at' => now(),
             'updated_at' => now()
@@ -28,7 +28,7 @@ class PostSeeder extends Seeder
         DB::table('posts')->insert([
             'user_id' => random_int(1,10),
             'category_id' => random_int(1,3),
-            'title' => 'Travel',
+            'title' => 'Title 2',
             'body' => $faker->text,
             'created_at' => now(),
             'updated_at' => now()
@@ -37,7 +37,7 @@ class PostSeeder extends Seeder
         DB::table('posts')->insert([
             'user_id' => random_int(1,10),
             'category_id' => random_int(1,3),
-            'title' => 'Travel',
+            'title' => 'Title 3',
             'body' => $faker->text,
             'created_at' => now(),
             'updated_at' => now()
@@ -46,7 +46,7 @@ class PostSeeder extends Seeder
         DB::table('posts')->insert([
             'user_id' => random_int(1,10),
             'category_id' => random_int(1,3),
-            'title' => 'Travel',
+            'title' => 'Title 4',
             'body' => $faker->text,
             'created_at' => now(),
             'updated_at' => now()
@@ -55,7 +55,7 @@ class PostSeeder extends Seeder
         DB::table('posts')->insert([
             'user_id' => random_int(1,10),
             'category_id' => random_int(1,3),
-            'title' => 'Travel',
+            'title' => 'Title 5',
             'body' => $faker->text,
             'created_at' => now(),
             'updated_at' => now()
