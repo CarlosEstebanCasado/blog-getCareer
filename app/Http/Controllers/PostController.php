@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\PostRequest;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -49,15 +50,15 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $request->validate([
+        /*$request->validate([
             'title',
             'user',
             'category',
             'body',
             'image'
-        ]);
+        ]);*/
 
         $post = new Post([
             'title' => $request->get('title'),
@@ -103,14 +104,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        $request->validate([
+        /*$request->validate([
             'title',
             'user',
             'category',
             'body',
-        ]);
+        ]);*/
 
         $post = Post::find($id);
         $post -> title = $request->get('title');

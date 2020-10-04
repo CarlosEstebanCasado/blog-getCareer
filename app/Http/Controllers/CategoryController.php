@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -45,7 +46,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $request->validate([
             'name'
@@ -54,7 +55,7 @@ class CategoryController extends Controller
         $category = new Category([
             'name' => $request->get('name'),
         ]);
-        
+
         $category->save();
         return redirect('/categories')->with('success','Category saved');
     }
@@ -89,7 +90,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $request->validate([
             'name'
