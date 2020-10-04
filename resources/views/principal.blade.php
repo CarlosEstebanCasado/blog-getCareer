@@ -2,21 +2,41 @@
 
 @section('content')
 <div class="container">
+    <h1>Blog</h1>
     <div class="row">
-        <div class="col-md-10 blogShort">
-            <h1>Title 1</h1>
-            <img src="http://www.kaczmarek-photo.com/wp-content/uploads/2012/06/guinnes-150x150.jpg" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
-            
-                <em>This snippet use <a href="http://bootsnipp.com/snippets/featured/sexy-sidebar-navigation" target="_blank">Sexy Sidebar Navigation</a></em>
-            <article><p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
-                five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
-                of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.    
-                </p></article>
-            <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">READ MORE</a> 
+        @if ($posts != null)
+            @foreach ($posts as $post)
+            <div class="col-md-10 mb-5">
+                <h1>{{$post->title}}</h1>
+                @if ($post->image != null)
+                <img src="{{ $post->image }}" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
+                @endif
+                    @foreach ($categories as $category)
+                        @if ($category->id == $post->category_id)
+                        <em>Category: <a href="{{route('category', $post->category_id)}}">{{ $category->name }}</a></em><br>
+                        @endif
+                    @endforeach
+                    
+                    @foreach ($users as $user)
+                        @if ($user->id == $post->user_id)
+                        <em>Author: {{ $user->name }}</em><br>
+                        @endif
+                    @endforeach
+                <article class="mt-4">
+                    <p>
+                        {{ Str::limit($post->body , 300, '...')}}   
+                    </p>
+                </article>
+                <a class="btn btn-secondary pull-right marginBottom10" href="{{route('post', $post->id)}}">READ MORE</a> 
+            </div>
+            @endforeach
+        @else
+        <div class="col-md-10 mb-5">
+            <div class="container">
+                <p class="mt-5">No results</p>
+            </div>
         </div>
+        @endif
     </div>
 </div>
 @endsection

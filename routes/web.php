@@ -11,9 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('principal');
-});
+});*/
+
+Route::get('/', 'ShowPostsController@index')->name('principal');
+
+Route::get('/category/{id}', 'ShowPostsController@getPostsCategory')->name('category');
+
+Route::get('/post/{id}', 'ShowPostsController@showPost')->name('post');
 
 Auth::routes();
 
