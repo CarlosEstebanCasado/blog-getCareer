@@ -1,6 +1,7 @@
 # Prueba Blog GetCareer
+* Primero hay que crear la BD en el SGBD que prefieras y configurar el fichero .env
 
-Descargar y ejecutar estos comandos:
+* Ejecutar estos comandos:
 
 ```
 cd blog-getCareer
