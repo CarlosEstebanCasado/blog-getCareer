@@ -1,10 +1,13 @@
 # Prueba Blog GetCareer
 
-Descargar y ejecutar estos comandos
+Descargar y ejecutar estos comandos:
 
 ```
+cd blog-getCareer
+composer install
 php artisan migrate
 php artisan db:seed
+php artisan serve
 ```
 
 ## Administrador blog
