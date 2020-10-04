@@ -19,7 +19,23 @@
             <div class="form-group">    
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" name="title"/>
-            </div>    
+            </div>
+            <div class="form-group">    
+                <label for="user">User:</label>
+                <select class="form-control" name="user">
+                @foreach ($users as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>
+                @endforeach
+                </select>
+            </div>
+            <div class="form-group">    
+                <label for="category">Category:</label>
+                <select class="form-control" name="category">
+                @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+                </select>
+            </div> 
             <div class="form-group">    
                 <label for="body">Body</label>
                 <textarea class="form-control" name="body" id="" cols="30" rows="10"></textarea>

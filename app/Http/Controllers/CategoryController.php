@@ -54,6 +54,7 @@ class CategoryController extends Controller
         $category = new Category([
             'name' => $request->get('name'),
         ]);
+        
         $category->save();
         return redirect('/categories')->with('success','Category saved');
     }

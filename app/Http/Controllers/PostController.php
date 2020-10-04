@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -36,7 +38,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $users = User::all();
+        $categories = Category::all();
+        return view('posts.create',compact('categories','users'));
     }
 
     /**
@@ -47,7 +51,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title',
+            'user',
+            'category',
+            'body',
+            'image'
+        ]);
+
+        $post = new Post([
+            'title' => $request->get('title'),
+            'user_id' => $request->get('user'),
+            'category_id' => $request->get('category'),
+            'body' => $request->get('body'),
+            'image' => $request->get('image'),
+        ]);
+
+        $post->save();
+        return redirect('/posts')->with('success','Post saved');
     }
 
     /**
