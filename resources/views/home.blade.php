@@ -18,8 +18,6 @@
                         <li><a href="{{route('categories.index')}}">Categories</a></li>
                         <li><a href="{{route('posts.index')}}">Posts</a></li>
                     </ul>
-                    
-                    
                 </div>
             </div>
         </div>
