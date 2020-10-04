@@ -90,7 +90,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $users = User::all();
+        $categories = Category::all();
+        return view('posts.edit', compact('post', 'users', 'categories'));
     }
 
     /**
@@ -102,7 +105,22 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title',
+            'user',
+            'category',
+            'body',
+        ]);
+
+        $post = Post::find($id);
+        $post -> title = $request->get('title');
+        $post -> user_id = $request->get('user');
+        $post -> category_id = $request->get('category');
+        $post -> body = $request->get('body');
+        $post -> image = $request->get('image');
+        $post->save();
+
+        return redirect('/posts')->with('success','Post Updated!');
     }
 
     /**
@@ -113,6 +131,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect('/posts')->with('success', 'Post deleted!');
     }
 }
