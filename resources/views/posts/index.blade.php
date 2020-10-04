@@ -3,7 +3,10 @@
 @section('content')
 <div class="row">
 <div class="col-sm-12">
-    <h1 class="display-3">Posts</h1>    
+    <h1 class="display-3">Posts</h1>
+    <div>
+        <a style="margin: 19px;" href="{{ route('posts.create')}}" class="btn btn-primary">New Post</a>
+    </div> 
   <table class="table table-striped">
     <thead>
         <tr>
@@ -40,5 +43,12 @@
     </tbody>
   </table>
 <div>
+</div>
+<div class="col-sm-12">
+    @if(session()->get('success'))
+        <div class="alert alert-success">
+        {{ session()->get('success') }}  
+        </div>
+    @endif
 </div>
 @endsection

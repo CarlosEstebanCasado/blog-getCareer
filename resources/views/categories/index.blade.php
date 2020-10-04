@@ -38,10 +38,10 @@
     <div>
     </div>
     <div class="col-sm-12">
-        @if(session()->get('success'))
-          <div class="alert alert-success">
-            {{ session()->get('success') }}  
-          </div>
-        @endif
-      </div>
+      @if(session()->get('success'))
+        <div class="alert alert-success">
+          {{ session()->get('success') }}  
+        </div>
+      @endif
+    </div>
 @endsection
