@@ -15,11 +15,11 @@
     return view('principal');
 });*/
 
-Route::get('/', 'ShowPostsController@index')->name('principal');
+Route::get('/', 'BlogController@index')->name('principal');
 
-Route::get('/category/{id}', 'ShowPostsController@getPostsCategory')->name('category');
+Route::get('/category/{id}', 'BlogController@getPostsCategory')->name('category');
 
-Route::get('/post/{id}', 'ShowPostsController@showPost')->name('post');
+Route::get('/post/{id}', 'BlogController@showPost')->name('post');
 
 Auth::routes();
 

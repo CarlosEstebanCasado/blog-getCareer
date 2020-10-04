@@ -7,7 +7,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 
-class ShowPostsController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
